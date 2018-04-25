@@ -1,0 +1,344 @@
+﻿#%RAML 1.0
+title: Configure API
+version: v1
+documentation:
+ - title: 论坛接口
+   content: |
+     baseUri如下:
+     - dev: 未定
+     - clone: 未定
+     - online: 未定
+
+mediaType:  application/json
+
+/topic/create:
+  description: 创建话题
+  post:
+    body:
+        application/json:
+            example: |
+              {
+              	"content":"文章内容",
+              	"title":"测试文章",
+              	"userCode":"测试码"
+              }
+    responses:
+          200:
+              body:
+                  application/json:
+                    example: |
+                       {
+                          "code": 0,    //错误码
+                          "data": {
+                            "id": 4     //文章主键
+                          }
+                        }
+
+
+/topic/search:
+  description: 分页查找话题
+  get:
+    queryParameters:
+        pageSize:
+          required: true
+          type: integer
+          description: 页大小
+        pageNo:
+          required: true
+          type: integer
+          description: 第几页
+    responses:
+          200:
+              body:
+                  application/json:
+                     example: |
+                       {
+                         "code": 0,
+                         "data": {
+                           "entities": [
+                             {
+                               "id": 4,               //文章主键
+                               "content": "文章内容",  //文章内容
+                               "title": "测试文章",    //文章标题
+                               "userCode": "测试码",   //测试码
+                               "clickNum": null,       //点击数
+                               "createdTime": 1524626318000 //创建时间 毫秒数
+                             },
+                             {
+                               "id": 3,
+                               "content": "文章内容",
+                               "title": "测试文章",
+                               "userCode": "测试码",
+                               "clickNum": null,
+                               "createdTime": 1524626315000
+                             }
+                           ],
+                           "total": 3
+                         }
+                       }
+
+
+/topic/get:
+  description: 根据主键获取话题信息
+  get:
+    queryParameters:
+      id:
+        required: true
+        type: integer
+        description: 话题主键
+    responses:
+          200:
+              body:
+                  application/json:
+                     example: |
+                       {
+                          "code": 0,
+                          "data": {
+                            "entity": {
+                              "id": 1,
+                              "content": "世界和平，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，",
+                              "title": "我是标题",
+                              "userCode": "123456",
+                              "clickNum": null,
+                              "createdTime": null
+                            }
+                          }
+                        }
+
+/reply/createFirst:
+  description: 对话题进行评论
+  post:
+    body:
+      application/json:
+        example: |
+            {
+            	"topicId":1,       //话题主键
+            	"userCode":"123",  //用户码
+            	"content":"Hello World"    //评论内容
+            }
+    responses:
+          200:
+              body:
+                  application/json:
+                     example: |
+                       {
+                          "code": 0,
+                          "data": {
+                            "id": 8   //评论的主键
+                          }
+                        }
+
+/reply/createReply:
+  description: 对评论或是回复进行评论
+  post:
+    body:
+      application/json:
+        example: |
+          {
+          	"userCode":"123",          //用户码
+          	"content":"我是评论内容",    //评论内容
+          	"replyId":1                //被评论的id
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {
+                  "code": 0,    //错误码
+                  "data": {
+                    "id": 10    //该评论的主键
+                  }
+                }
+
+/reply/search:
+  description: 分页查询主题的评论信息 为递归结构，如果前端不好处理，后台修改为前端需要的格式
+  get:
+    queryParameters:
+      pageSize:
+        required: true
+        type: integer
+        description: 页大小
+      pageNo:
+        required: true
+        type: integer
+        description: 第几页
+      id:
+        required: true
+        type: integer
+        description: 话题主键
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "code": 0,
+                "data": {
+                  "entities": [
+                    {
+                      "reply": {
+                        "id": 1,
+                        "topicId": 2,
+                        "userCode": "123",
+                        "content": "h1",
+                        "replyId": null,
+                        "goodNum": 5,
+                        "badNum": 0,
+                        "createdTime": null
+                      },
+                      "son": [
+                        {
+                          "reply": {
+                            "id": 2,
+                            "topicId": null,
+                            "userCode": "123",
+                            "content": "h2",
+                            "replyId": 1,
+                            "goodNum": 0,
+                            "badNum": 0,
+                            "createdTime": null
+                          },
+                          "son": [
+                            {
+                              "reply": {
+                                "id": 4,
+                                "topicId": null,
+                                "userCode": "123",
+                                "content": "h4",
+                                "replyId": 2,
+                                "goodNum": 0,
+                                "badNum": 0,
+                                "createdTime": null
+                              },
+                              "son": [
+                                {
+                                  "reply": {
+                                    "id": 5,
+                                    "topicId": null,
+                                    "userCode": "123",
+                                    "content": "h5",
+                                    "replyId": 4,
+                                    "goodNum": 0,
+                                    "badNum": 0,
+                                    "createdTime": null
+                                  },
+                                  "son": null
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "reply": {
+                            "id": 3,
+                            "topicId": null,
+                            "userCode": "123",
+                            "content": "h3",
+                            "replyId": 1,
+                            "goodNum": 0,
+                            "badNum": 0,
+                            "createdTime": null
+                          },
+                          "son": null
+                        },
+                        {
+                          "reply": {
+                            "id": 9,
+                            "topicId": null,
+                            "userCode": "123",
+                            "content": "我是评论内容",
+                            "replyId": 1,
+                            "goodNum": 0,
+                            "badNum": 0,
+                            "createdTime": 1524627589000
+                          },
+                          "son": null
+                        },
+                        {
+                          "reply": {
+                            "id": 10,
+                            "topicId": null,
+                            "userCode": "123",
+                            "content": "我是评论内容",
+                            "replyId": 1,
+                            "goodNum": 0,
+                            "badNum": 0,
+                            "createdTime": 1524627734000
+                          },
+                          "son": null
+                        }
+                      ]
+                    },
+                    {
+                      "reply": {
+                        "id": 6,
+                        "topicId": 2,
+                        "userCode": "123",
+                        "content": "h6",
+                        "replyId": null,
+                        "goodNum": 0,
+                        "badNum": 0,
+                        "createdTime": null
+                      },
+                      "son": [
+                        {
+                          "reply": {
+                            "id": 7,
+                            "topicId": null,
+                            "userCode": "123",
+                            "content": "h7",
+                            "replyId": 6,
+                            "goodNum": 0,
+                            "badNum": 0,
+                            "createdTime": null
+                          },
+                          "son": null
+                        }
+                      ]
+                    }
+                  ],
+                  "total": 2
+                }
+              }
+
+/reply/do_good:
+  description: 对评论点赞
+  get:
+    queryParameters:
+      id:
+        required: true
+        type: integer
+        description: 评论主键
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "code": 0,
+                "data": {
+                  "addNum": 1
+                }
+              }
+
+
+/reply/do_bad:
+  description: 踩
+  get:
+    queryParameters:
+      id:
+        required: true
+        type: integer
+        description: 评论主键
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "code": 0,
+                "data": {
+                  "addNum": 1
+                }
+              }

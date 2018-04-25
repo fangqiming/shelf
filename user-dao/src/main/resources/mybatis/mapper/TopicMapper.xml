@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.i000.stock.user.dao.mapper.TopicMapper">
+    <resultMap id="Topic" type="com.i000.stock.user.dao.model.Topic">
+        <id column="id" property="id"/>
+
+        <result column="content" property="content"/>
+        <result column="title" property="title"/>
+        <result column="user_code" property="userCode"/>
+        <result column="click_number" property="clickNumber"/>
+
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_time" property="updatedTime"/>
+        <result column="deleted_time" property="deletedTime"/>
+    </resultMap>
+
+    <select id="search" parameterType="com.i000.stock.user.dao.entity.bo.BaseSearchVo" resultMap="Topic">
+        select sql_calc_found_rows * from topic
+		ORDER BY created_time DESC limit ${baseSearchVo.start},${baseSearchVo.pageSize}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select found_rows();
+    </select>
+</mapper>
