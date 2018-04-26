@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.i000.stock.user.dao.mapper.PriceMapper">
+
+    <resultMap id="Price" type="com.i000.stock.user.dao.model.Price">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="open" property="open"/>
+        <result column="close" property="close"/>
+        <result column="volume" property="volume"/>
+        <result column="high" property="high"/>
+        <result column="low" property="low"/>
+        <result column="date" property="date"/>
+        <result column="buy" property="buy"/>
+        <result column="sell" property="sell"/>
+        <result column="is_open" property="isOpen"/>
+    </resultMap>
+
+
+    <select id="find" resultMap="Price">
+      select * from price where `code`=${code} and date=#{date}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select found_rows();
+    </select>
+</mapper>

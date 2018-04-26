@@ -3,6 +3,7 @@ package com.i000.stock.user.web;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @EnableScheduling
 @EnableCaching
+@EnableFeignClients(basePackages = "com.i000.stock*")
 @SpringBootApplication(scanBasePackages = "com.i000.stock*")
 public class UserApplication {
     public static void main(String[] args) {

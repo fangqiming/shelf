@@ -1,0 +1,24 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.i000.stock.user.dao.mapper.CompanyMapper">
+
+    <resultMap id="Company" type="com.i000.stock.user.dao.model.Company">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="prefix" property="prefix"/>
+        <result column="industry" property="industry"/>
+    </resultMap>
+
+
+    <select id="search" parameterType="com.i000.stock.user.dao.bo.BaseSearchVo" resultMap="Company">
+        select sql_calc_found_rows * from company
+		ORDER BY id DESC limit ${baseSearchVo.start},${baseSearchVo.pageSize}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select found_rows();
+    </select>
+</mapper>

@@ -41,6 +41,10 @@
         <org.projectlombok.version>1.16.18</org.projectlombok.version>
         <google.guava.version>22.0</google.guava.version>
         <hibernate.validator.version>5.4.1.Final</hibernate.validator.version>
+        <retrofit2.version>2.3.0</retrofit2.version>
+        <retrofit2.log.version>3.8.1</retrofit2.log.version>
+        <jsoup.jsoup>1.11.2</jsoup.jsoup>
+        <openfeign.version>9.5.1</openfeign.version>
     </properties>
 
     <build>
@@ -68,6 +72,12 @@
                 <version>${mysql.driver.version}</version>
             </dependency>
             <!-- mysql driver -->
+
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.jsoup}</version>
+            </dependency>
 
             <!-- servlet -->
             <dependency>
@@ -141,6 +151,66 @@
                 <version>${google.guava.version}</version>
             </dependency>
             <!-- guava -->
+
+            <!-- retrofit2 -->
+            <dependency>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>retrofit</artifactId>
+                <version>${retrofit2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>converter-jackson</artifactId>
+                <version>${retrofit2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>converter-gson</artifactId>
+                <version>${retrofit2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>adapter-rxjava</artifactId>
+                <version>${retrofit2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>converter-scalars</artifactId>
+                <version>${retrofit2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>logging-interceptor</artifactId>
+                <version>${retrofit2.log.version}</version>
+            </dependency>
+            <!-- retrofit2  -->
+
+            <!--feign -->
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-core</artifactId>
+                <version>${openfeign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-jackson</artifactId>
+                <version>${openfeign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-slf4j</artifactId>
+                <version>${openfeign.version}</version>
+            </dependency>
+            <!--feign -->
+
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Edgware.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
 
         </dependencies>

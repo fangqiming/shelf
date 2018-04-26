@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.i000.stock.user.dao.mapper.IndexInfoMapper">
+
+    <resultMap id="Index" type="com.i000.stock.user.dao.model.IndexInfo">
+        <result column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="change" property="change"/>
+        <result column="open" property="open"/>
+        <result column="pre_close" property="preClose"/>
+        <result column="close" property="close"/>
+        <result column="high" property="high"/>
+        <result column="low" property="low"/>
+        <result column="volume" property="volume"/>
+        <result column="amount" property="amount"/>
+        <result column="date" property="date"/>
+    </resultMap>
+
+
+    <select id="find" resultMap="Index">
+      select * from `index_info` where date=#{date}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select found_rows();
+    </select>
+</mapper>

@@ -1,0 +1,939 @@
+﻿#%RAML 1.0
+title: Configure API
+version: v1
+documentation:
+ - title: 实时服务API
+   content: |
+     实时服务
+     baseUri如下:
+     - dev: 未定
+     - clone: 未定
+     - online: 未定
+
+mediaType:  application/json
+
+/index/get_now:
+  description: 获取最新的指数信息
+  get:
+    responses:
+          200:
+              body:
+                  application/json:
+                     example: |
+                       {
+                          "code": 0,    //错误码 如果正常 为 0
+                          "data": {
+                            "entities": [
+                              {
+                                "id": null,   //数据库中的主键 由于获取的是实时数据，因而id为null
+                                "code": "sh000001", //  指数代码
+                                "name": "上证指数", //指数名称
+                                "change": "-0.49%", //涨跌幅
+                                "open": 3119.4962,  //开盘
+                                "preClose": 3117.9739,  //昨日收盘
+                                "close": 3102.609,  //收盘
+                                "high": 3121.9334,  //最高
+                                "low": 3102.609,    //最低
+                                "volume": 19433200, //成交量
+                                "amount": 24197747044,  //成交金额
+                                "date": "2018-04-26"  //日期
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000002",
+                                "name": "Ａ股指数",
+                                "change": "-0.49%",
+                                "open": 3267.0199,
+                                "preClose": 3265.4149,
+                                "close": 3249.291,
+                                "high": 3269.5745,
+                                "low": 3249.291,
+                                "volume": 19419774,
+                                "amount": 24192020467,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000003",
+                                "name": "Ｂ股指数",
+                                "change": "-0.14%",
+                                "open": 320.0934,
+                                "preClose": 320.3157,
+                                "close": 319.8781,
+                                "high": 320.4693,
+                                "low": 319.8635,
+                                "volume": 13426,
+                                "amount": 5726577,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000008",
+                                "name": "综合指数",
+                                "change": "-0.42%",
+                                "open": 2865.5172,
+                                "preClose": 2859.5572,
+                                "close": 2847.6024,
+                                "high": 2868.4139,
+                                "low": 2847.6024,
+                                "volume": 4119405,
+                                "amount": 4730856554,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000009",
+                                "name": "上证380",
+                                "change": "-0.71%",
+                                "open": 5316.0347,
+                                "preClose": 5330.0389,
+                                "close": 5292.1956,
+                                "high": 5321.5867,
+                                "low": 5292.1699,
+                                "volume": 4176273,
+                                "amount": 5912873436,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000010",
+                                "name": "上证180",
+                                "change": "-0.54%",
+                                "open": 8215.8885,
+                                "preClose": 8200.5332,
+                                "close": 8156.1224,
+                                "high": 8226.1091,
+                                "low": 8156.1224,
+                                "volume": 7282465,
+                                "amount": 9341714204,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000011",
+                                "name": "基金指数",
+                                "change": "-0.20%",
+                                "open": 6039.7151,
+                                "preClose": 6035.8603,
+                                "close": 6023.6448,
+                                "high": 6044.1436,
+                                "low": 6023.6404,
+                                "volume": 3127376,
+                                "amount": 2539394670,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000012",
+                                "name": "国债指数",
+                                "change": "0.01%",
+                                "open": 163.9402,
+                                "preClose": 163.9245,
+                                "close": 163.9363,
+                                "high": 163.9402,
+                                "low": 163.9347,
+                                "volume": 645,
+                                "amount": 572648,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000016",
+                                "name": "上证50",
+                                "change": "-0.48%",
+                                "open": 2712.517,
+                                "preClose": 2702.9802,
+                                "close": 2690.0476,
+                                "high": 2717.5693,
+                                "low": 2690.0476,
+                                "volume": 2936523,
+                                "amount": 3827694437,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000017",
+                                "name": "新综指",
+                                "change": "-0.49%",
+                                "open": 2634.029,
+                                "preClose": 2632.7345,
+                                "close": 2619.7281,
+                                "high": 2636.0879,
+                                "low": 2619.7281,
+                                "volume": 19412002,
+                                "amount": 24157933425,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000300",
+                                "name": "沪深300",
+                                "change": "-0.95%",
+                                "open": 3823.3921,
+                                "preClose": 3828.7015,
+                                "close": 3792.4961,
+                                "high": 3828.7129,
+                                "low": 3792.4961,
+                                "volume": 13048902,
+                                "amount": 22273706339,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsh000905",
+                                "name": "中证500",
+                                "change": "-0.64%",
+                                "open": 5951.1919,
+                                "preClose": 5959.422,
+                                "close": 5921.5096,
+                                "high": 5955.2617,
+                                "low": 5921.4323,
+                                "volume": 8145142,
+                                "amount": 10316274405,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399001",
+                                "name": "深证成指",
+                                "change": "-1.28%",
+                                "open": 10495.027,
+                                "preClose": 10547.099,
+                                "close": 10412.532,
+                                "high": 10508.013,
+                                "low": 10412.532,
+                                "volume": 2944415848,
+                                "amount": 46421065425.902,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399002",
+                                "name": "深成指R",
+                                "change": "-1.28%",
+                                "open": 12540.487,
+                                "preClose": 12602.666,
+                                "close": 12441.914,
+                                "high": 12556.004,
+                                "low": 12441.914,
+                                "volume": 1408387999,
+                                "amount": 23749858271.7,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399003",
+                                "name": "成份Ｂ指",
+                                "change": "-0.37%",
+                                "open": 5925.381,
+                                "preClose": 5930.563,
+                                "close": 5908.637,
+                                "high": 5950.387,
+                                "low": 5906.396,
+                                "volume": 858400,
+                                "amount": 2891507.316,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399004",
+                                "name": "深证100R",
+                                "change": "-1.89%",
+                                "open": 5335.658,
+                                "preClose": 5382.607,
+                                "close": 5280.789,
+                                "high": 5346.18,
+                                "low": 5280.767,
+                                "volume": 563034318,
+                                "amount": 12684096173.86,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399005",
+                                "name": "中小板指",
+                                "change": "-0.94%",
+                                "open": 7114.892,
+                                "preClose": 7114.162,
+                                "close": 7047.316,
+                                "high": 7114.892,
+                                "low": 7046.281,
+                                "volume": 346518178,
+                                "amount": 5489838142.6,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399006",
+                                "name": "创业板指",
+                                "change": "-0.83%",
+                                "open": 1818.694,
+                                "preClose": 1819.406,
+                                "close": 1804.243,
+                                "high": 1819.428,
+                                "low": 1803.715,
+                                "volume": 208321608,
+                                "amount": 3612381541.65,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399008",
+                                "name": "中小300",
+                                "change": "-0.84%",
+                                "open": 1405.527,
+                                "preClose": 1406.686,
+                                "close": 1394.835,
+                                "high": 1405.527,
+                                "low": 1394.8,
+                                "volume": 622573698,
+                                "amount": 9078294092.4,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399100",
+                                "name": "新 指 数",
+                                "change": "-0.96%",
+                                "open": 8116.441,
+                                "preClose": 8141.467,
+                                "close": 8063.706,
+                                "high": 8121.88,
+                                "low": 8063.706,
+                                "volume": 2915052602,
+                                "amount": 46309626042.37,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399101",
+                                "name": "中小板综",
+                                "change": "-0.69%",
+                                "open": 10629.682,
+                                "preClose": 10639.246,
+                                "close": 10566.293,
+                                "high": 10630.547,
+                                "low": 10565.935,
+                                "volume": 1173026518,
+                                "amount": 16179273803.74,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399106",
+                                "name": "深证综指",
+                                "change": "-0.89%",
+                                "open": 1804.394,
+                                "preClose": 1809.26,
+                                "close": 1793.085,
+                                "high": 1805.252,
+                                "low": 1793.085,
+                                "volume": 2944415848,
+                                "amount": 46421065425.902,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399107",
+                                "name": "深证Ａ指",
+                                "change": "-0.90%",
+                                "open": 1887.18,
+                                "preClose": 1892.284,
+                                "close": 1875.326,
+                                "high": 1888.075,
+                                "low": 1875.326,
+                                "volume": 2943130978,
+                                "amount": 46416697161.05,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399108",
+                                "name": "深证Ｂ指",
+                                "change": "-0.18%",
+                                "open": 1091.36,
+                                "preClose": 1091.365,
+                                "close": 1089.372,
+                                "high": 1093.789,
+                                "low": 1089.323,
+                                "volume": 1284870,
+                                "amount": 4368264.852,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399333",
+                                "name": "中小板R",
+                                "change": "-0.94%",
+                                "open": 7838.345,
+                                "preClose": 7837.447,
+                                "close": 7763.898,
+                                "high": 7838.345,
+                                "low": 7762.758,
+                                "volume": 346518178,
+                                "amount": 5489838142.6,
+                                "date": "2018-04-26"
+                              },
+                              {
+                                "id": null,
+                                "code": "\nsz399606",
+                                "name": "创业板R",
+                                "change": "-0.83%",
+                                "open": 1895.39,
+                                "preClose": 1896.133,
+                                "close": 1880.33,
+                                "high": 1896.155,
+                                "low": 1879.779,
+                                "volume": 208321608,
+                                "amount": 3612381541.65,
+                                "date": "2018-04-26"
+                              }
+                            ]
+                          }
+                        }
+
+
+
+/index/get_old:
+  description: 获取过去某一天的指数
+  get:
+    queryParameters:
+        date:
+          type: string
+          required: true
+          description: 获取过去某一天的指数信息 格式 如 2018-04-25
+    responses:
+          200:
+              body:
+                  application/json:
+                     example: |
+                       {
+                          "code": 0,
+                          "data": {
+                            "entities": [
+                              {
+                                "id": 1,
+                                "code": "sh000001",
+                                "name": "上证指数",
+                                "change": "-0.35%",
+                                "open": 3112.3978,
+                                "preClose": 3128.9271,
+                                "close": 3117.9739,
+                                "high": 3122.9082,
+                                "low": 3107.0008,
+                                "volume": 127311053,
+                                "amount": 161298141662,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 2,
+                                "code": "\nsh000002",
+                                "name": "Ａ股指数",
+                                "change": "-0.35%",
+                                "open": 3259.5468,
+                                "preClose": 3276.9,
+                                "close": 3265.4149,
+                                "high": 3270.592,
+                                "low": 3253.9072,
+                                "volume": 127174853,
+                                "amount": 161200350796,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 3,
+                                "code": "\nsh000003",
+                                "name": "Ｂ股指数",
+                                "change": "-0.20%",
+                                "open": 320.7364,
+                                "preClose": 320.9527,
+                                "close": 320.3157,
+                                "high": 320.7364,
+                                "low": 319.5928,
+                                "volume": 136200,
+                                "amount": 97790866,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 4,
+                                "code": "\nsh000008",
+                                "name": "综合指数",
+                                "change": "-0.78%",
+                                "open": 2865.8781,
+                                "preClose": 2882.1444,
+                                "close": 2859.5572,
+                                "high": 2874.4352,
+                                "low": 2853.3481,
+                                "volume": 29469228,
+                                "amount": 34325406894,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 5,
+                                "code": "\nsh000009",
+                                "name": "上证380",
+                                "change": "0.23%",
+                                "open": 5292.7542,
+                                "preClose": 5318.0113,
+                                "close": 5330.0389,
+                                "high": 5334.3986,
+                                "low": 5284.1408,
+                                "volume": 32260498,
+                                "amount": 46265708245,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 6,
+                                "code": "\nsh000010",
+                                "name": "上证180",
+                                "change": "-0.49%",
+                                "open": 8198.6018,
+                                "preClose": 8240.5478,
+                                "close": 8200.5332,
+                                "high": 8225.6298,
+                                "low": 8175.2024,
+                                "volume": 49282094,
+                                "amount": 60435377362,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 7,
+                                "code": "\nsh000011",
+                                "name": "基金指数",
+                                "change": "-0.22%",
+                                "open": 6041.5737,
+                                "preClose": 6049.2292,
+                                "close": 6035.8603,
+                                "high": 6044.5151,
+                                "low": 6032.515,
+                                "volume": 24828720,
+                                "amount": 28965863786,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 8,
+                                "code": "\nsh000012",
+                                "name": "国债指数",
+                                "change": "0.01%",
+                                "open": 163.9307,
+                                "preClose": 163.915,
+                                "close": 163.9245,
+                                "high": 163.932,
+                                "low": 163.8846,
+                                "volume": 113512,
+                                "amount": 111455647,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 9,
+                                "code": "\nsh000016",
+                                "name": "上证50",
+                                "change": "-0.73%",
+                                "open": 2707.7101,
+                                "preClose": 2722.8474,
+                                "close": 2702.9802,
+                                "high": 2717.3144,
+                                "low": 2696.2223,
+                                "volume": 23501293,
+                                "amount": 27772719983,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 10,
+                                "code": "\nsh000017",
+                                "name": "新综指",
+                                "change": "-0.35%",
+                                "open": 2628.0097,
+                                "preClose": 2642.0097,
+                                "close": 2632.7345,
+                                "high": 2636.9147,
+                                "low": 2623.4586,
+                                "volume": 127142719,
+                                "amount": 161090496819,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 11,
+                                "code": "\nsh000300",
+                                "name": "沪深300",
+                                "change": "-0.38%",
+                                "open": 3824.5929,
+                                "preClose": 3843.4886,
+                                "close": 3828.7015,
+                                "high": 3838.6921,
+                                "low": 3817.032,
+                                "volume": 78172612,
+                                "amount": 105750449452,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 12,
+                                "code": "\nsh000905",
+                                "name": "中证500",
+                                "change": "0.04%",
+                                "open": 5929.405,
+                                "preClose": 5957.1927,
+                                "close": 5959.422,
+                                "high": 5968.8794,
+                                "low": 5919.5228,
+                                "volume": 60382790,
+                                "amount": 78868220460,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 13,
+                                "code": "\nsz399001",
+                                "name": "深证成指",
+                                "change": "-0.09%",
+                                "open": 10503.941,
+                                "preClose": 10556.822,
+                                "close": 10547.099,
+                                "high": 10579.178,
+                                "low": 10488.874,
+                                "volume": 18334834694,
+                                "amount": 258197683679,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 14,
+                                "code": "\nsz399002",
+                                "name": "深成指R",
+                                "change": "-0.09%",
+                                "open": 12551.098,
+                                "preClose": 12613.516,
+                                "close": 12602.666,
+                                "high": 12640.997,
+                                "low": 12533.094,
+                                "volume": 8687929722,
+                                "amount": 121536890660,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 15,
+                                "code": "\nsz399003",
+                                "name": "成份Ｂ指",
+                                "change": "-0.43%",
+                                "open": 5951.354,
+                                "preClose": 5956.399,
+                                "close": 5930.563,
+                                "high": 5955.096,
+                                "low": 5890.442,
+                                "volume": 7530573,
+                                "amount": 41627581,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 16,
+                                "code": "\nsz399004",
+                                "name": "深证100R",
+                                "change": "-0.34%",
+                                "open": 5375.847,
+                                "preClose": 5401.008,
+                                "close": 5382.607,
+                                "high": 5404.691,
+                                "low": 5363.347,
+                                "volume": 2847149238,
+                                "amount": 42950150254,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 17,
+                                "code": "\nsz399005",
+                                "name": "中小板指",
+                                "change": "-0.00%",
+                                "open": 7084.458,
+                                "preClose": 7114.476,
+                                "close": 7114.162,
+                                "high": 7137.657,
+                                "low": 7071.678,
+                                "volume": 2168177121,
+                                "amount": 35480286307,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 18,
+                                "code": "\nsz399006",
+                                "name": "创业板指",
+                                "change": "0.69%",
+                                "open": 1798.002,
+                                "preClose": 1806.861,
+                                "close": 1819.406,
+                                "high": 1825.234,
+                                "low": 1795.787,
+                                "volume": 1757746671,
+                                "amount": 30015513291,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 19,
+                                "code": "\nsz399008",
+                                "name": "中小300",
+                                "change": "0.04%",
+                                "open": 1399.874,
+                                "preClose": 1406.176,
+                                "close": 1406.686,
+                                "high": 1409.837,
+                                "low": 1397.446,
+                                "volume": 4086603324,
+                                "amount": 59508375130,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 20,
+                                "code": "\nsz399100",
+                                "name": "新 指 数",
+                                "change": "0.13%",
+                                "open": 8093.393,
+                                "preClose": 8130.94,
+                                "close": 8141.467,
+                                "high": 8152.182,
+                                "low": 8082.937,
+                                "volume": 18195462451,
+                                "amount": 257617957973,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 21,
+                                "code": "\nsz399101",
+                                "name": "中小板综",
+                                "change": "0.14%",
+                                "open": 10580.375,
+                                "preClose": 10624.82,
+                                "close": 10639.246,
+                                "high": 10651.978,
+                                "low": 10563.94,
+                                "volume": 7402837723,
+                                "amount": 102933679692,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 22,
+                                "code": "\nsz399106",
+                                "name": "深证综指",
+                                "change": "0.27%",
+                                "open": 1796.558,
+                                "preClose": 1804.406,
+                                "close": 1809.26,
+                                "high": 1810.983,
+                                "low": 1794.258,
+                                "volume": 18334834694,
+                                "amount": 258197683679,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 23,
+                                "code": "\nsz399107",
+                                "name": "深证Ａ指",
+                                "change": "0.27%",
+                                "open": 1878.932,
+                                "preClose": 1887.162,
+                                "close": 1892.284,
+                                "high": 1894.098,
+                                "low": 1876.516,
+                                "volume": 18320909630,
+                                "amount": 258130971059,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 24,
+                                "code": "\nsz399108",
+                                "name": "深证Ｂ指",
+                                "change": "-0.50%",
+                                "open": 1096.209,
+                                "preClose": 1096.853,
+                                "close": 1091.365,
+                                "high": 1096.954,
+                                "low": 1086.363,
+                                "volume": 13925064,
+                                "amount": 66712620,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 25,
+                                "code": "\nsz399333",
+                                "name": "中小板R",
+                                "change": "0.01%",
+                                "open": 7804.723,
+                                "preClose": 7836.665,
+                                "close": 7837.447,
+                                "high": 7863.332,
+                                "low": 7790.645,
+                                "volume": 2168177121,
+                                "amount": 35480286307,
+                                "date": "2018-04-25"
+                              },
+                              {
+                                "id": 26,
+                                "code": "\nsz399606",
+                                "name": "创业板R",
+                                "change": "0.69%",
+                                "open": 1873.825,
+                                "preClose": 1883.058,
+                                "close": 1896.133,
+                                "high": 1902.206,
+                                "low": 1871.517,
+                                "volume": 1757746671,
+                                "amount": 30015513291,
+                                "date": "2018-04-25"
+                              }
+                            ]
+                          }
+                        }
+
+
+/price/get_now:
+  description: 获取指定股票的实时价格
+  get:
+    queryParameters:
+      code:
+        type: string
+        required: true
+        description: 股票代码
+    responses:
+          200:
+              body:
+                  application/json:
+                     example: |
+                       {
+                          "code": 0,
+                          "data": {
+                            "entity": {
+                              "id": null,   //数据库中的主键
+                              "name": "浦发银行", //公司名
+                              "code": "600000",   //股票代码
+                              "open": 11.73,      //开盘价
+                              "close": 11.66,     //收盘价
+                              "volume": 3426969,  //成家量
+                              "high": 11.78,      //最高价
+                              "low": 11.66,       //最低价
+                              "date": "2018-04-26", //日期
+                              "buy": 11.69,         //买一价
+                              "sell": 11.7,         //卖一价
+                              "isOpen": 0           //标记
+                            }
+                          }
+                        }
+
+
+/price/get_old:
+  description:  获取指定股票的历史价格
+  get:
+    queryParameters:
+      code:
+        type: string
+        required: true
+        description: 股票代码
+      date:
+        type: string
+        required: true
+        description: 时间 格式如 2018-04-25
+
+    responses:
+          200:
+              body:
+                  application/json:
+                     example: |
+                       {
+                          "code": 0,
+                          "data": {
+                            "entity": {
+                              "id": 2887,
+                              "name": "浦发银行",
+                              "code": "600000",
+                              "open": 11.71,
+                              "close": 11.78,
+                              "volume": 16082634,
+                              "high": 11.77,
+                              "low": 11.65,
+                              "date": "2018-04-25",
+                              "buy": 11.65,
+                              "sell": 11.66,
+                              "isOpen": 0
+                            }
+                          }
+                        }
+
+
+/price/find_now_simple:
+  description: 获取全部股票的实时价格(此接口与 /price/find_now_complete 作用一致，返回数据的格式不同)
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                	"code": 0,
+                	"data": {
+                		"entity": {
+                			"name": ["锋龙股份", "宏川智慧", "润建通信"],  //股票名
+                			"code": ["002931", "002930", "002929"],      //股票代码
+                			"open": [52.6, 28.31, 49.79],                //开盘价
+                			"close": [55.68, 28.05, 49.91],              //收盘价
+                			"volume": [3121315, 5249359, 2616862],       //成交量
+                			"high": [55, 28.5, 49.98],                   //最高价
+                			"low": [52.52, 26.87, 48.3],                 //最低价
+                			"date": "2018-04-26",                        //日期
+                			"buy": [53.44, 27.2, 48.82],                 //买一价
+                			"sell": [53.48, 27.24, 48.83],               //卖一价
+                			"isOpen": [0, 0, 0]                          //开盘标记
+                		}
+                	}
+                }
+
+/price/find_now_complete:
+  description: 获取全部股票的实时价格(此接口与 /price/find_now_simple 作用一致，返回数据的格式不同)
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "code": 0,
+                "data": {
+                  "entities": [
+                    {
+                      "id": null,
+                      "name": "锋龙股份",
+                      "code": "002931",
+                      "open": 52.6,
+                      "close": 55.68,
+                      "volume": 3474862,
+                      "high": 55,
+                      "low": 52.52,
+                      "date": "2018-04-26",
+                      "buy": 53.55,
+                      "sell": 53.56,
+                      "isOpen": 0
+                    },
+                    {
+                      "id": null,
+                      "name": "宏川智慧",
+                      "code": "002930",
+                      "open": 28.31,
+                      "close": 28.05,
+                      "volume": 5919708,
+                      "high": 28.5,
+                      "low": 26.87,
+                      "date": "2018-04-26",
+                      "buy": 27.13,
+                      "sell": 27.14,
+                      "isOpen": 0
+                    },
+                    {
+                      "id": null,
+                      "name": "润建通信",
+                      "code": "002929",
+                      "open": 49.79,
+                      "close": 49.91,
+                      "volume": 2852693,
+                      "high": 49.98,
+                      "low": 48.3,
+                      "date": "2018-04-26",
+                      "buy": 48.87,
+                      "sell": 48.88,
+                      "isOpen": 0
+                    }
+                  ]
+                }
+              }

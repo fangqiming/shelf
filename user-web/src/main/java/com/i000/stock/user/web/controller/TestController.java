@@ -2,12 +2,15 @@ package com.i000.stock.user.web.controller;
 
 import com.i000.stock.user.api.entity.vo.ExampleVo;
 import com.i000.stock.user.api.service.ExampleService;
+import com.i000.stock.user.api.service.IndexService;
+import com.i000.stock.user.api.service.PriceService;
 import com.i000.stock.user.core.resolver.JsonParameter;
 import com.i000.stock.user.core.result.Results;
 import com.i000.stock.user.core.result.base.ResultEntity;
 import com.i000.stock.user.core.util.ConvertUtils;
 import com.i000.stock.user.core.util.ValidationUtils;
 import com.i000.stock.user.dao.model.Example;
+import com.i000.stock.user.service.impl.external.ExternalServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +28,13 @@ import javax.annotation.Resource;
 @RestController
 public class TestController {
 
+
     @Resource
     private ExampleService exampleService;
+
+    @Resource
+    private ExternalServiceImpl externalService;
+
 
     /**
      * 测试数据库访问
@@ -49,6 +57,7 @@ public class TestController {
      */
     @GetMapping("/test_exception")
     public ResultEntity testException(Integer a) {
+        System.out.println(externalService.getIndex());
         System.out.println(System.currentTimeMillis());
         return Results.newEmptyResultEntity();
     }
@@ -62,6 +71,7 @@ public class TestController {
     @GetMapping("/test_conversion")
     public ResultEntity testConversion(ExampleVo example) {
         ValidationUtils.validate(example);
+
         return Results.newSingleResultEntity(example);
     }
 
