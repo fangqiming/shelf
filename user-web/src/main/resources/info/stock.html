@@ -1,0 +1,563 @@
+<!DOCTYPE HTML><html><head><title>Configure API API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 6.4.2"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+      .items {
+        background: #f5f5f5;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+      }
+      .examples {
+        margin-left: 0.5em;
+      }
+      .resource-modal li > ul {
+        margin-bottom: 1em;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Configure API API documentation <small>version v1</small></h1><p></p><h3><a href="#">股票推荐系统</a></h3><p>推荐系统接口文档 baseUri如下:</p><ul><li>dev: 未定</li><li>clone: 未定</li><li>online: 未定</li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="trade_search_gain" class="panel-title">/trade/search_gain</h3></div><div class="panel-body"><div class="top-resource-description"><p>查找最新的推荐信息获利情况 此接口同样适用于盈利历史</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_trade_search_gain"><span class="parent"></span>/trade/search_gain</a> <span class="methods"><a href="#trade_search_gain_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_trade_search_gain" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#trade_search_gain_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="trade_search_gain_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/trade/search_gain</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#trade_search_gain_get_request" data-toggle="tab">Request</a></li><li><a href="#trade_search_gain_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="trade_search_gain_get_request"><h3>Query Parameters</h3><ul><li><strong>pageSize</strong>: <em>required (integer)</em><p>页大小</p></li><li><strong>pageNo</strong>: <em>required (integer)</em><p>第几页</p></li></ul></div><div class="tab-pane" id="trade_search_gain_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entities": [
+       {
+         "profit": 15,             //收益率之和
+         "sellNumber": 1,          //卖出的股票份数
+         "date": "2017-04-04"      //日期
+       },
+       {
+         "profit": 13,
+         "sellNumber": 2,
+         "date": "2017-04-03" //实际盈利为 profit / sellNumber / 100  取两位小数
+       }
+     ],
+     "total": 2
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="recommend_get_contrast" class="panel-title">/recommend/get_contrast</h3></div><div class="panel-body"><div class="top-resource-description"><p>获取推荐对比的折线图</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_recommend_get_contrast"><span class="parent"></span>/recommend/get_contrast</a> <span class="methods"><a href="#recommend_get_contrast_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_recommend_get_contrast" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#recommend_get_contrast_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="recommend_get_contrast_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/recommend/get_contrast</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#recommend_get_contrast_get_request" data-toggle="tab">Request</a></li><li><a href="#recommend_get_contrast_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="recommend_get_contrast_get_request"><h3>Query Parameters</h3><ul><li><strong>step</strong>: <em>required (string)</em><p>步长 取值为 WEEK MONTH QUARTER YEAR</p></li></ul></div><div class="tab-pane" id="recommend_get_contrast_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entity": {
+       "baseMarket": [       //大盘指数
+         2364.619048,
+         2359.5
+       ],
+       "aiMarket": [         //引擎指数
+         3474.52381,
+         3576
+       ],
+       "time": [
+         "201703",         //对应的日期
+         "201704"
+       ]
+     }
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="recommend_find" class="panel-title">/recommend/find</h3></div><div class="panel-body"><div class="top-resource-description"><p>获取最新推荐</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_recommend_find"><span class="parent"></span>/recommend/find</a> <span class="methods"><a href="#recommend_find_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_recommend_find" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#recommend_find_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="recommend_find_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/recommend/find</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#recommend_find_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="recommend_find_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entities": [
+       {
+         "id": 36,           //推荐id
+         "name": "INCY",     //股票名称
+         "type": "LONG1",    //股票类型  此处后续将变更为  高波动 稳定  等需要和隆基讨论
+         "action": "SELL",   //股票类型  后续需要变更为 买  卖
+         "rank": 64.67,      //排名  此处后续将变更为  推荐星级
+         "note": "Corp | DRUGS - Biotechnology "   //备注  此处后续将变更为汉语
+       },
+       {
+         "id": 37,
+         "name": "KATE",
+         "type": "LONG1",
+         "action": "SELL",
+         "rank": 41.9,
+         "note": "Spade &amp; Company | CONSUMER NON-DURABLES - Textile - A "
+       },
+       {
+         "id": 38,
+         "name": "PTEN",
+         "type": "LONG1",
+         "action": "SELL",
+         "rank": 42.61,
+         "note": "Energy | ENERGY - Oil &amp; Gas Drilling &amp; Explo "
+       },
+       {
+         "id": 39,
+         "name": "THO",
+         "type": "LONG1",
+         "action": "BUY",
+         "rank": 0.04,
+         "note": "Industries Inc | AUTOMOTIVE - Recreational Vehicles "
+       },
+       {
+         "id": 40,
+         "name": "BOFI",
+         "type": "LONG2",
+         "action": "BUY",
+         "rank": 0.18,
+         "note": "Holding Inc | BANKING - Savings &amp; Loans "
+       }
+     ]
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="recommend_search" class="panel-title">/recommend/search</h3></div><div class="panel-body"><div class="top-resource-description"><p>获取推荐历史 此分页是按照日期分页的</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_recommend_search"><span class="parent"></span>/recommend/search</a> <span class="methods"><a href="#recommend_search_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_recommend_search" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#recommend_search_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="recommend_search_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/recommend/search</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#recommend_search_get_request" data-toggle="tab">Request</a></li><li><a href="#recommend_search_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="recommend_search_get_request"><h3>Query Parameters</h3><ul><li><strong>pageSize</strong>: <em>required (integer)</em><p>页大小</p></li><li><strong>pageNo</strong>: <em>required (integer)</em><p>第几页</p></li></ul></div><div class="tab-pane" id="recommend_search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entities": [
+       {
+         "date": "2017-04-04",     //日期
+         "gainRate": 15,           //收益率
+         "recommend": [
+           {
+             "id": 36,
+             "name": "INCY",
+             "type": "LONG1",
+             "action": "SELL",
+             "rank": 64.67,
+             "note": "Corp | DRUGS - Biotechnology "
+           },
+           {
+             "id": 37,
+             "name": "KATE",
+             "type": "LONG1",
+             "action": "SELL",
+             "rank": 41.9,
+             "note": "Spade &amp; Company | CONSUMER NON-DURABLES - Textile - A "
+           },
+           {
+             "id": 38,
+             "name": "PTEN",
+             "type": "LONG1",
+             "action": "SELL",
+             "rank": 42.61,
+             "note": "Energy | ENERGY - Oil &amp; Gas Drilling &amp; Explo "
+           },
+           {
+             "id": 39,
+             "name": "THO",
+             "type": "LONG1",
+             "action": "BUY",
+             "rank": 0.04,
+             "note": "Industries Inc | AUTOMOTIVE - Recreational Vehicles "
+           },
+           {
+             "id": 40,
+             "name": "BOFI",
+             "type": "LONG2",
+             "action": "BUY",
+             "rank": 0.18,
+             "note": "Holding Inc | BANKING - Savings &amp; Loans "
+           }
+         ]
+       }
+     ],
+     "total": 2
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="bbs_search" class="panel-title">/BBS/search</h3></div><div class="panel-body"><div class="top-resource-description"><p>获取论坛的话题列表</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bbs_search"><span class="parent"></span>/BBS/search</a> <span class="methods"><a href="#bbs_search_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_bbs_search" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#bbs_search_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bbs_search_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/BBS/search</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#bbs_search_get_request" data-toggle="tab">Request</a></li><li><a href="#bbs_search_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bbs_search_get_request"><h3>Query Parameters</h3><ul><li><strong>pageSize</strong>: <em>required (integer)</em><p>页大小</p></li><li><strong>pageNo</strong>: <em>required (integer)</em><p>第几页</p></li></ul></div><div class="tab-pane" id="bbs_search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entities": [
+       {
+         "date": "2017-04-03",
+         "gainRate": 6.5,
+         "recommend": [
+           {
+             "id": 33,       //前端根据这些字段生成话题
+             "name": "AKS",
+             "type": "LONG1",
+             "action": "BUY",
+             "rank": 0.53,
+             "note": "Steel Holding Cor | METALS &amp; MINING - Steel &amp; Iron "
+           },
+           {
+             "id": 34,
+             "name": "VALE",
+             "type": "LONG1",
+             "action": "BUY",
+             "rank": 0.57,
+             "note": "SA ADR | METALS &amp; MINING - Industrial Metals "
+           },
+           {
+             "id": 35,
+             "name": "HTZ",
+             "type": "SHORT",
+             "action": "COVER",
+             "rank": 6.64,
+             "note": "Global Holding | DIVERSIFIED SERVICES - Rental &amp; Lea "
+           }
+         ]
+       }
+     ],
+     "total": 2
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="bbs_find_by_date" class="panel-title">/BBS/find_by_date</h3></div><div class="panel-body"><div class="top-resource-description"><p>点击话题进入论坛详情页</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bbs_find_by_date"><span class="parent"></span>/BBS/find_by_date</a> <span class="methods"><a href="#bbs_find_by_date_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_bbs_find_by_date" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#bbs_find_by_date_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bbs_find_by_date_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/BBS/find_by_date</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#bbs_find_by_date_get_request" data-toggle="tab">Request</a></li><li><a href="#bbs_find_by_date_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bbs_find_by_date_get_request"><h3>Query Parameters</h3><ul><li><strong>date</strong>: <em>required (string)</em><p>日期 格式为 yyyy-MM-dd</p></li></ul></div><div class="tab-pane" id="bbs_find_by_date_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entities": [
+       {
+         "id": 33,
+         "name": "AKS",
+         "type": "LONG1",
+         "action": "BUY",
+         "rank": 0.53,
+         "note": "Steel Holding Cor | METALS &amp; MINING - Steel &amp; Iron "
+       },
+       {
+         "id": 34,
+         "name": "VALE",
+         "type": "LONG1",
+         "action": "BUY",
+         "rank": 0.57,
+         "note": "SA ADR | METALS &amp; MINING - Industrial Metals "
+       },
+       {
+         "id": 35,
+         "name": "HTZ",
+         "type": "SHORT",
+         "action": "COVER",
+         "rank": 6.64,
+         "note": "Global Holding | DIVERSIFIED SERVICES - Rental &amp; Lea "
+       }
+     ]
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="bbs_search_comment" class="panel-title">/BBS/search_comment</h3></div><div class="panel-body"><div class="top-resource-description"><p>点击话题进入论坛详情页</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bbs_search_comment"><span class="parent"></span>/BBS/search_comment</a> <span class="methods"><a href="#bbs_search_comment_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_bbs_search_comment" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#bbs_search_comment_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bbs_search_comment_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/BBS/search_comment</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#bbs_search_comment_get_request" data-toggle="tab">Request</a></li><li><a href="#bbs_search_comment_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bbs_search_comment_get_request"><h3>Query Parameters</h3><ul><li><strong>date</strong>: <em>required (string)</em><p>日期 格式为 yyyy-MM-dd</p></li><li><strong>pageSize</strong>: <em>required (integer)</em><p>页大小</p></li><li><strong>pageNo</strong>: <em>required (integer)</em><p>第几页</p></li></ul></div><div class="tab-pane" id="bbs_search_comment_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entities": [
+       {
+         "id": 7,                      //评论主键
+         "content": "shiji世纪niha",   //评论类型  实际上可能了是一串html代码
+         "praiseNum": 0,               //点赞数
+         "reportNum": 0,               //举报数
+         "date": "2017-04-03",         //该评论针对的是哪一天的推荐
+         "createdTime": 1519467467000, //评论的创建时间
+         "updatedTime": null           //评论的更新时间
+       }
+     ],
+     "total": 1
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="bbs_praise" class="panel-title">/BBS/praise</h3></div><div class="panel-body"><div class="top-resource-description"><p>对评论点赞</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bbs_praise"><span class="parent"></span>/BBS/praise</a> <span class="methods"><a href="#bbs_praise_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_bbs_praise" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#bbs_praise_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bbs_praise_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/BBS/praise</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#bbs_praise_get_request" data-toggle="tab">Request</a></li><li><a href="#bbs_praise_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bbs_praise_get_request"><h3>Query Parameters</h3><ul><li><strong>commentId</strong>: <em>required (integer)</em><p>评论主键 注意header中需要包含用户码</p></li></ul></div><div class="tab-pane" id="bbs_praise_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entity": {
+       "id": 1,
+       "content": "sfsdfasdf",
+       "praiseNum": 4,
+       "reportNum": 13,
+       "date": "2017-04-04",
+       "createdTime": null,
+       "updatedTime": null
+     }
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="bbs_report" class="panel-title">/BBS/report</h3></div><div class="panel-body"><div class="top-resource-description"><p>对评论举报</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bbs_report"><span class="parent"></span>/BBS/report</a> <span class="methods"><a href="#bbs_report_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_bbs_report" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#bbs_report_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bbs_report_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/BBS/report</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#bbs_report_get_request" data-toggle="tab">Request</a></li><li><a href="#bbs_report_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bbs_report_get_request"><h3>Query Parameters</h3><ul><li><strong>commentId</strong>: <em>required (integer)</em><p>评论主键 注意header中需要包含用户码</p></li></ul></div><div class="tab-pane" id="bbs_report_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entity": {
+       "id": 1,
+       "content": "sfsdfasdf",
+       "praiseNum": 4,
+       "reportNum": 13,
+       "date": "2017-04-04",
+       "createdTime": null,
+       "updatedTime": null
+     }
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="bbs_create_comment" class="panel-title">/BBS/create_comment</h3></div><div class="panel-body"><div class="top-resource-description"><p>发表评论 注意header中需要包含userCode信息</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bbs_create_comment"><span class="parent"></span>/BBS/create_comment</a> <span class="methods"><a href="#bbs_create_comment_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_bbs_create_comment" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#bbs_create_comment_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bbs_create_comment_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/BBS/create_comment</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#bbs_create_comment_post_request" data-toggle="tab">Request</a></li><li><a href="#bbs_create_comment_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bbs_create_comment_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+ 	"content":"shiji世纪niha",   //评论的内容
+ 	"date":"2017-04-03"          //该评论针对的哪一天的推荐
+ }
+</code></pre></div></div><div class="tab-pane" id="bbs_create_comment_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "result": 1     //1 表示发表成功
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="trade_get_lately" class="panel-title">/trade/get_lately</h3></div><div class="panel-body"><div class="top-resource-description"><p>获取最近的交易记录</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_trade_get_lately"><span class="parent"></span>/trade/get_lately</a> <span class="methods"><a href="#trade_get_lately_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_trade_get_lately" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#trade_get_lately_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="trade_get_lately_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/trade/get_lately</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#trade_get_lately_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="trade_get_lately_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entities": [
+       {
+         "name": "AKS",      //股票名称
+         "action": "BUY",    //交易动作 买入 卖出  做空
+         "type": "LONG1",    //股票类型
+         "newPrice": 7.19,   //交易时的最新价格
+         "gain": null,       //收益率  实际值需要 除以100
+         "note": "Ak Steel Holding Cor | METALS &amp; MINING - Steel &amp; Iron ",   //备注
+         "oldPrice": null,   //买入价格  由于现在是买 ，因而之前的价格为null
+         "newDate": "2017-04-04",  //交易日期
+         "oldDate": null     //买入日期  由于是买  因而 之前的买入日期为null
+       },
+       {
+         "name": "VALE",
+         "action": "BUY",
+         "type": "LONG1",
+         "newPrice": 9.86,
+         "gain": null,
+         "note": "Vale SA ADR | METALS &amp; MINING - Industrial Metals ",
+         "oldPrice": null,
+         "newDate": "2017-04-04",
+         "oldDate": null
+       },
+       {
+         "name": "HTZ",
+         "action": "COVER",
+         "type": "SHORT",
+         "newPrice": 15.6,
+         "gain": 14.9,
+         "note": "Hertz Global Holding | DIVERSIFIED SERVICES - Rental &amp; Lea ",
+         "oldPrice": 15.6,
+         "newDate": "2017-04-04",
+         "oldDate": "2017-04-04"
+       }
+     ]
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="trade_search" class="panel-title">/trade/search</h3></div><div class="panel-body"><div class="top-resource-description"><p>分页获取交易记录 此处的分页是按照的 天 分页</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_trade_search"><span class="parent"></span>/trade/search</a> <span class="methods"><a href="#trade_search_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_trade_search" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#trade_search_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="trade_search_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/trade/search</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#trade_search_get_request" data-toggle="tab">Request</a></li><li><a href="#trade_search_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="trade_search_get_request"><h3>Query Parameters</h3><ul><li><strong>pageSize</strong>: <em>required (integer)</em><p>页大小</p></li><li><strong>pageNo</strong>: <em>required (integer)</em><p>第几页</p></li></ul></div><div class="tab-pane" id="trade_search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entities": [
+       {
+         "date": "2017-04-04",
+         "gainRate": 15,
+         "trade": [
+           {
+             "name": "AKS",
+             "action": "BUY",
+             "type": "LONG1",
+             "newPrice": 7.19,
+             "gain": null,
+             "note": "Ak Steel Holding Cor | METALS &amp; MINING - Steel &amp; Iron ",
+             "oldPrice": null,
+             "newDate": "2017-04-04",
+             "oldDate": null
+           },
+           {
+             "name": "VALE",
+             "action": "BUY",
+             "type": "LONG1",
+             "newPrice": 9.86,
+             "gain": null,
+             "note": "Vale SA ADR | METALS &amp; MINING - Industrial Metals ",
+             "oldPrice": null,
+             "newDate": "2017-04-04",
+             "oldDate": null
+           },
+           {
+             "name": "HTZ",
+             "action": "COVER",
+             "type": "SHORT",
+             "newPrice": 15.6,
+             "gain": 14.9,
+             "note": "Hertz Global Holding | DIVERSIFIED SERVICES - Rental &amp; Lea ",
+             "oldPrice": 15.6,
+             "newDate": "2017-04-04",
+             "oldDate": "2017-04-04"
+           }
+         ]
+       }
+     ],
+     "total": 2
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="trade_find_stock" class="panel-title">/trade/find_stock</h3></div><div class="panel-body"><div class="top-resource-description"><p>获取当前持股，url似乎不太合理，有交易才有持有股票，暂时放在此处</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_trade_find_stock"><span class="parent"></span>/trade/find_stock</a> <span class="methods"><a href="#trade_find_stock_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_trade_find_stock" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#trade_find_stock_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="trade_find_stock_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/trade/find_stock</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#trade_find_stock_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="trade_find_stock_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+    "entities": [
+      {
+        "id": 73,        //持股主键
+        "name": "AKS",   //股票名称
+        "oldPrice": 7.19,  //买入价格
+        "oldRank": 0.53,   //买入时的推荐星级
+        "newPrice": 7.19,    //现在的价格
+        "newRank": 1.48,     //现在的推荐星级
+        "holdDay": 0,        //持有天数
+        "gain": 0,           //收益率
+        "type": "LONG1"      //股票类型
+      },
+      {
+        "id": 74,
+        "name": "ARNC",
+        "oldPrice": 26.98,
+        "oldRank": 0.36,
+        "newPrice": 26.38,
+        "newRank": 7.09,
+        "holdDay": 20,
+        "gain": -2,
+        "type": "LONG1"
+      }
+    ]
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="trade_get_overview" class="panel-title">/trade/get_overview</h3></div><div class="panel-body"><div class="top-resource-description"><p>获取账户的总览信息</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_trade_get_overview"><span class="parent"></span>/trade/get_overview</a> <span class="methods"><a href="#trade_get_overview_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_trade_get_overview" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#trade_get_overview_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="trade_get_overview_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/trade/get_overview</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#trade_get_overview_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="trade_get_overview_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+   "code": 0,
+   "data": {
+     "entity": {
+       "data": "2017-04-04",     //截止到该日期位置的资产信息
+       "totalAmount": 1014000,   //总额
+       "balance": 272500,        //余额
+       "stockAmount": 741500,    //股票余额
+       "totalGain": 14000,       //总收益
+       "todayBuy": 100000,       //今日买入
+       "todaySell": 50000,       //今日卖出
+       "todayGain": 7500,        //最新收益
+       "initAmount": 1000000     //初始金额
+     }
+   }
+ }
+</code></pre></div></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#trade_search_gain">/trade/search_gain</a></li><li><a href="#recommend_get_contrast">/recommend/get_contrast</a></li><li><a href="#recommend_find">/recommend/find</a></li><li><a href="#recommend_search">/recommend/search</a></li><li><a href="#bbs_search">/BBS/search</a></li><li><a href="#bbs_find_by_date">/BBS/find_by_date</a></li><li><a href="#bbs_search_comment">/BBS/search_comment</a></li><li><a href="#bbs_praise">/BBS/praise</a></li><li><a href="#bbs_report">/BBS/report</a></li><li><a href="#bbs_create_comment">/BBS/create_comment</a></li><li><a href="#trade_get_lately">/trade/get_lately</a></li><li><a href="#trade_search">/trade/search</a></li><li><a href="#trade_find_stock">/trade/find_stock</a></li><li><a href="#trade_get_overview">/trade/get_overview</a></li></ul></div></div></div></div></body></html>
